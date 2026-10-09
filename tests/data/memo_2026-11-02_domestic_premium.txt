@@ -1,0 +1,11 @@
+HARBOR FABRICATION CO. - OPERATIONS MEMO
+Memo ID: MEMO-2026-090
+Date: November 2, 2026
+From: Dana Whitcombe, VP of Supply Chain
+To: Purchasing
+Subject: Wider domestic preference for critical parts
+
+Because of continuing port congestion, effective November 2, 2026 the domestic price premium threshold for critical
+parts is raised from 45% to 65% of the international price. For other parts the threshold stays at 30%. This
+replaces the critical-part threshold in Purchasing Policy Section 3.
+Please also consider whether lead-time guarantees belong in supplier contracts.

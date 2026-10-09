@@ -1,0 +1,591 @@
+{
+  "_about": "Harbor Fabrication Co. purchasing policy HF-PUR-100 rev 2.1 and operations memos, written as structured rules. This file is DATA: the code knows rule *types*, this file supplies who/what/when/how-much. Every rule cites its source. Memos override the base policy where they conflict. Reviewed by a human before use; an LLM may propose edits when new memos arrive. All company, supplier, part and policy content is synthetic.",
+  "status": "human-reviewed",
+  "reviewed_on": "2026-10-04",
+  "documents": [
+    {
+      "id": "HF-PUR-100",
+      "file": "procurement_policy.pdf",
+      "date": "2026-02-01"
+    },
+    {
+      "id": "MEMO-2026-018",
+      "file": "memo_2026-05-18_magnet_diversification.pdf",
+      "date": "2026-05-18"
+    },
+    {
+      "id": "MEMO-2026-044",
+      "file": "memo_2026-07-27_air_freight.pdf",
+      "date": "2026-07-27"
+    },
+    {
+      "id": "MEMO-2026-051",
+      "file": "memo_2026-09-14_circuit_board_quality.pdf",
+      "date": "2026-09-14"
+    }
+  ],
+  "rating_scale_best_first": [
+    "A+",
+    "A",
+    "A-",
+    "B+",
+    "B",
+    "B-",
+    "C+",
+    "C",
+    "C-",
+    "D"
+  ],
+  "rules": [
+    {
+      "id": "approved-list",
+      "type": "approved_supplier_list",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "2",
+        "quote": "Suppliers struck from the Approved Supplier List must not be used for any reason"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "all components",
+        "selector": {}
+      },
+      "params": {}
+    },
+    {
+      "id": "cert-electronics",
+      "type": "required_certification",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "2.1",
+        "quote": "Suppliers of electronic components, circuit boards and safety-related parts must hold a current ISO-9001 certificate"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "electronic components",
+        "selector": {
+          "category_in": [
+            "Electronic Component"
+          ]
+        }
+      },
+      "params": {
+        "certifications": [
+          "ISO-9001"
+        ]
+      }
+    },
+    {
+      "id": "cert-pcb",
+      "type": "required_certification",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "2.1",
+        "quote": "circuit boards ... must hold a current ISO-9001 certificate"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "circuit boards",
+        "selector": {
+          "name_keywords": [
+            "pcb",
+            "printed circuit",
+            "circuit board"
+          ]
+        }
+      },
+      "params": {
+        "certifications": [
+          "ISO-9001"
+        ]
+      }
+    },
+    {
+      "id": "cert-power-supply",
+      "type": "required_certification",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "2.1",
+        "quote": "Suppliers of power conversion components (DC link capacitor packs, choke cores) must also hold IEC-62368 certification"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "power conversion components: DC link capacitor packs, choke cores",
+        "selector": {
+          "any_keywords": [
+            "capacitor pack",
+            "choke core"
+          ]
+        }
+      },
+      "params": {
+        "certifications": [
+          "ISO-9001",
+          "IEC-62368"
+        ]
+      },
+      "notes": "'Safety-related parts' is not defined anywhere; no rule is applied for it (open question)."
+    },
+    {
+      "id": "domestic-definition",
+      "type": "domestic_definition",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "3",
+        "quote": "Harbor Fabrication Co. buys from domestic (United States and Mexico) suppliers by preference"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "all suppliers",
+        "selector": {}
+      },
+      "params": {
+        "countries": [
+          "United States",
+          "USA",
+          "US",
+          "Mexico"
+        ]
+      },
+      "notes": "The database flags the Mexican supplier as not domestic. The policy text wins; the conflict is reported."
+    },
+    {
+      "id": "domestic-preference",
+      "title": "domestic sourcing preference",
+      "type": "domestic_preference",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "3",
+        "quote": "An international supplier may be chosen only if: (a) no domestic supplier can deliver by the date required, (b) the domestic price is more than 30% above the international price, or (c) no domestic source offers the part"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "all components",
+        "selector": {}
+      },
+      "params": {
+        "premium_threshold": 0.3,
+        "premium_threshold_critical": 0.45
+      }
+    },
+    {
+      "id": "critical-components",
+      "type": "critical_classification",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "4",
+        "quote": "motor controller ICs, IGBT power modules, circuit boards, samarium-cobalt magnets, and all sensing ICs and transducers (flow, level, salinity)"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "critical component categories",
+        "selector": {}
+      },
+      "params": {
+        "categories": [
+          {
+            "label": "motor controller IC",
+            "selector": {
+              "any_keywords": [
+                "controller ic"
+              ]
+            }
+          },
+          {
+            "label": "IGBT power module",
+            "selector": {
+              "any_keywords": [
+                "igbt"
+              ]
+            }
+          },
+          {
+            "label": "circuit board",
+            "selector": {
+              "name_keywords": [
+                "pcb",
+                "printed circuit",
+                "circuit board"
+              ]
+            },
+            "note": "The catalog item is a populated board assembly; treated as a circuit board (the stricter reading)."
+          },
+          {
+            "label": "samarium-cobalt magnet",
+            "selector": {
+              "any_keywords": [
+                "samarium"
+              ]
+            }
+          },
+          {
+            "label": "sensing IC",
+            "selector": {
+              "category_in": [
+                "Electronic Component"
+              ],
+              "all_of": [
+                [
+                  "sensor",
+                  "sensing",
+                  "transducer"
+                ],
+                [
+                  "flow",
+                  "level",
+                  "salinity"
+                ]
+              ]
+            },
+            "note": "Sensor housings (not electronic) are excluded; transducers count as sensing parts."
+          }
+        ]
+      }
+    },
+    {
+      "id": "concentration-default",
+      "type": "concentration_limit",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "5",
+        "quote": "No single supplier may provide more than 65% of the units of any critical part bought in a rolling 12-month window, or more than 80% for any other part"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "all components",
+        "selector": {}
+      },
+      "params": {
+        "max_share_critical": 0.65,
+        "max_share_noncritical": 0.8,
+        "min_secondary_share": 0.0,
+        "window_months": 12,
+        "min_qualified_suppliers_critical": 2,
+        "applies_per_order": false
+      },
+      "notes": "Measured over a rolling 12 months. The database has no purchase history, so the agent cannot judge this from one run; it reports each supplier's share instead of splitting individual orders (open question)."
+    },
+    {
+      "id": "concentration-magnets",
+      "title": "magnet supplier split, 60% cap",
+      "type": "concentration_limit",
+      "overrides": "concentration-default",
+      "source": {
+        "document": "MEMO-2026-018",
+        "section": "",
+        "quote": "the single-supplier cap for samarium-cobalt magnet segments (ITM-4403) is lowered from 65% to 60% ... at least 25% of the total volume with a second supplier"
+      },
+      "effective_from": "2026-05-18",
+      "effective_to": null,
+      "scope": {
+        "description": "samarium-cobalt magnets (memo calls them ITM-4403)",
+        "selector": {
+          "any_keywords": [
+            "samarium"
+          ],
+          "id_aliases": [
+            "ITM-4403"
+          ]
+        }
+      },
+      "params": {
+        "max_share": 0.6,
+        "min_secondary_share": 0.25,
+        "applies_per_order": true
+      },
+      "notes": "Memo ID ITM-4403 does not exist in the database; matched by name. The memo applies to 'all open and future orders', so the cap and the 25% second-supplier share are enforced on open + new orders in every run."
+    },
+    {
+      "id": "moq",
+      "type": "minimum_order_quantity",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "5.1",
+        "quote": "Every purchase order must be at or above the supplier's minimum order quantity (MOQ)"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "all components",
+        "selector": {}
+      },
+      "params": {}
+    },
+    {
+      "id": "hazmat",
+      "type": "hazmat_handling",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "6",
+        "quote": "Purchases of hazardous goods must be flagged for review by purchasing ... can add time to delivery"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "components flagged hazardous in the database",
+        "selector": {
+          "hazardous": true
+        }
+      },
+      "params": {
+        "receiving_buffer_days": null
+      },
+      "notes": "The policy gives no number for the extra receiving time, so none is invented (null = 0 days, reported as an open question)."
+    },
+    {
+      "id": "approval-thresholds",
+      "type": "approval_thresholds",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "7, 7.1",
+        "quote": "Any purchase order above $40,000 needs approval from the Sourcing Manager. Any purchase order above $120,000 needs approval from the VP of Supply Chain"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "all orders",
+        "selector": {}
+      },
+      "params": {
+        "approval_levels": [
+          {
+            "above": 40000,
+            "approver": "Sourcing Manager"
+          },
+          {
+            "above": 120000,
+            "approver": "VP of Supply Chain"
+          }
+        ],
+        "emergency_bypass_up_to": 60000,
+        "emergency_retroactive_approver": "Sourcing Manager",
+        "retroactive_business_days": 3
+      },
+      "notes": "Section 7.1 does not name who gives the retroactive approval; the Sourcing Manager (the first approval level) is assumed."
+    },
+    {
+      "id": "sustainability",
+      "title": "sustainability preference",
+      "type": "sustainability_preference",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "8",
+        "quote": "comparable in price (within 8%) and delivery (within 4 business days), prefer the supplier with an environmental rating of A or better"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "all components",
+        "selector": {}
+      },
+      "params": {
+        "comparable_price_pct": 0.08,
+        "comparable_business_days": 4,
+        "preferred_min_rating": "A",
+        "last_resort_below_rating": "B",
+        "preferred_certification": "ISO-14001"
+      }
+    },
+    {
+      "id": "strategic-suppliers",
+      "title": "Strategic-supplier preference",
+      "type": "strategic_preference",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "9",
+        "quote": "Order volume with suppliers designated Strategic should be kept steady, even when another supplier offers somewhat lower prices (savings of up to 12%). Moving a significant share of volume away from a Strategic supplier requires approval from the VP of Supply Chain."
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "suppliers with tier Strategic",
+        "selector": {}
+      },
+      "params": {
+        "tier": "Strategic",
+        "max_savings_to_stay": 0.12,
+        "shift_away_approver": "VP of Supply Chain"
+      },
+      "notes": "'Significant volume' is not defined and there is no purchase history. An order counts as a shift when a Strategic supplier that sells the part could have delivered on time but another supplier was chosen, and its value exceeds settings.strategic_shift_significant_above (0 = every such order). Open question for the business."
+    },
+    {
+      "id": "lead-time",
+      "type": "delivery_date",
+      "source": {
+        "document": "HF-PUR-100",
+        "section": "10",
+        "quote": "Each purchase order's expected delivery date must equal the order date plus the supplier's quoted lead time"
+      },
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "scope": {
+        "description": "all orders",
+        "selector": {}
+      },
+      "params": {}
+    },
+    {
+      "id": "air-freight",
+      "title": "air-freight authorization",
+      "type": "expedited_shipping",
+      "source": {
+        "document": "MEMO-2026-044",
+        "section": "",
+        "quote": "From August 3, 2026 through November 2, 2026, international shipments for confirmed production orders may move by air. Air freight cuts the effective lead time of an international supplier by 10 days (but never below 5 days)"
+      },
+      "effective_from": "2026-08-03",
+      "effective_to": "2026-11-02",
+      "scope": {
+        "description": "international suppliers, confirmed production orders only",
+        "selector": {}
+      },
+      "params": {
+        "lead_time_reduction_days": 10,
+        "min_lead_time_days": 5,
+        "international_only": true,
+        "approver": "Sourcing Manager",
+        "approval_per_request": true,
+        "budget_cap": 20000,
+        "cost_per_kg_range": [
+          6,
+          9
+        ]
+      },
+      "notes": "The memo limits air freight to confirmed production orders. The schedule has no status column, so every scheduled order is treated as confirmed (an assumption to confirm). Freight cost is estimated only for parts bought by the kg; other parts have no unit weights."
+    },
+    {
+      "id": "pcb-supplier-freeze",
+      "title": "circuit-board supplier freeze",
+      "type": "supplier_qualification_freeze",
+      "source": {
+        "document": "MEMO-2026-051",
+        "section": "2",
+        "quote": "boards may only be bought from suppliers whose board shipments we have already received and accepted"
+      },
+      "effective_from": "2026-09-14",
+      "effective_to": null,
+      "scope": {
+        "description": "circuit boards (memo calls them ITM-4405)",
+        "selector": {
+          "name_keywords": [
+            "pcb",
+            "printed circuit",
+            "circuit board"
+          ],
+          "id_aliases": [
+            "ITM-4405"
+          ]
+        }
+      },
+      "params": {
+        "estimated_duration_days": [
+          45,
+          75
+        ],
+        "evidence_of_prior_receipt": {
+          "prior_purchase_order": true,
+          "relationship_tier_in": [
+            "Strategic",
+            "Preferred"
+          ]
+        }
+      },
+      "notes": "The database has no receiving history. A supplier counts as 'previously received from' if there is a prior PO for the part, or it has a Strategic/Preferred relationship. This proxy is an open question for the business."
+    },
+    {
+      "id": "pcb-coc",
+      "type": "shipment_documentation",
+      "source": {
+        "document": "MEMO-2026-051",
+        "section": "1",
+        "quote": "Every circuit board shipment (ITM-4405) must arrive with a Certificate of Conformance"
+      },
+      "effective_from": "2026-09-14",
+      "effective_to": null,
+      "scope": {
+        "description": "circuit boards",
+        "selector": {
+          "name_keywords": [
+            "pcb",
+            "printed circuit",
+            "circuit board"
+          ],
+          "id_aliases": [
+            "ITM-4405"
+          ]
+        }
+      },
+      "params": {
+        "requirement": "Certificate of Conformance with cross-section test results on every shipment"
+      }
+    }
+  ],
+  "settings": {
+    "_about": "Decisions that belong to the business, not stated in the policy. Each is listed under open questions.",
+    "when_rule_conflicts_with_schedule": "follow_rule",
+    "_when_rule_conflicts_with_schedule_options": [
+      "follow_rule",
+      "protect_schedule"
+    ],
+    "strategic_shift_significant_above": 0,
+    "_strategic_shift_significant_above": "Order value in dollars above which moving volume away from a Strategic supplier counts as 'significant' (policy section 9) and needs VP of Supply Chain approval. 0 = every such order. Open question for the business.",
+    "base_policy_document": "HF-PUR-100",
+    "_base_policy_document": "If a scenario is dated before this policy took effect, the agent applies it anyway and raises a warning (no earlier version was provided).",
+    "recovery_options": true,
+    "_recovery_options": "For every late production order, list recovery options the agent has checked against the policy. Advice only: the plan itself is unchanged.",
+    "waivable_rule_types": [
+      "concentration_limit",
+      "domestic_preference",
+      "sustainability_preference",
+      "strategic_preference",
+      "supplier_qualification_freeze"
+    ],
+    "_waivable_rule_types": "Rules a recovery option may propose to waive for one run. The approved-supplier list and certifications are never waivable (policy section 2: 'for any reason').",
+    "extendable_rule_types": [
+      "expedited_shipping"
+    ],
+    "_extendable_rule_types": "Expired memos a recovery option may propose to extend, e.g. the air-freight authorization.",
+    "classify_parts_with_model": true,
+    "_classify_parts_with_model": "When a model is connected it reads every part and says which policy rules apply; the keyword rules remain the floor and disagreements are reported.",
+    "rewrite_messages_with_model": false,
+    "_rewrite_messages_with_model": "When a model is configured, it rewrites the ACTION and CRITICAL alerts in plain language. Code rejects any rewrite that adds or drops a number, date, order number or name. Order rationales are never rewritten.",
+    "default_approver": "Buyer on duty",
+    "_default_approver": "Who approves a held order at or below the lowest policy approval threshold. A business choice: the policy names no approver below that.",
+    "receiving_team": "Quality and Receiving",
+    "_receiving_team": "Who gets receiving instructions: the circuit-board Certificate of Conformance (the board memo is from Quality Engineering) and Hazmat Storage (policy section 6).",
+    "conflict_decided_by": "Sourcing Manager",
+    "_conflict_decided_by": "Who receives the decision request when following a rule makes a customer order late. Their held orders go to them too (or to a higher approver if the order value requires it).",
+    "reuse_supplier_if_within_pct": 0.1,
+    "calendar_days_per_5_business_days": 7,
+    "max_extra_units_to_meet_split_pct": 0.25,
+    "_max_extra_units_to_meet_split_pct": "Most extra units (as a share of real need) the agent may buy just to satisfy a supplier-split rule.",
+    "order_release": "approve_by_exception",
+    "_order_release_options": {
+      "approve_by_exception": "Default. Routine orders are released automatically; an order waits for a person if any enabled approval_exceptions entry applies.",
+      "approve_every_order": "Most cautious: every order waits for a person.",
+      "policy_thresholds_only": "Least cautious: only what the policy names needs approval (air freight, over $40,000 / $120,000)."
+    },
+    "approval_exceptions": {
+      "max_order_value": 5000,
+      "critical_part": true,
+      "memo_applies": true,
+      "international_supplier": true,
+      "below_B_supplier": true,
+      "air_freight": true,
+      "hazardous": true,
+      "single_allowed_supplier": true,
+      "arrives_late": true,
+      "rule_conflict": true,
+      "ai_flag": true
+    },
+    "_approval_exceptions": "Each true entry sends matching orders to a person. max_order_value is the auto-release limit in dollars; it is an open question for the business. Two entries also take a narrower mode: critical_part \"single_sourced_only\" holds a critical part only when it has one allowed supplier (a label from the model alone is still held through ai_flag); single_allowed_supplier \"critical_only\" applies the hold only to critical parts, which is all the policy's two-supplier rule (section 4) covers. Holding every critical part and every single-supplier part is a caution choice, not a policy requirement."
+  }
+}

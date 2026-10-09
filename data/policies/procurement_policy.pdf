@@ -1,0 +1,211 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 3384 >>
+stream
+BT
+/F1 10 Tf
+13 TL
+56 760 Td
+/F2 10 Tf
+(HARBOR FABRICATION CO. - PURCHASING POLICY) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+(Document HF-PUR-100, Revision 2.1. Effective February 1, 2026. Owner: VP of Supply Chain.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(1. Purpose and Scope) Tj T*
+/F1 10 Tf
+(This policy governs every purchase of production material by Harbor Fabrication Co. It) Tj T*
+/F1 10 Tf
+(applies to all buyers, planners and automated purchasing tools.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(2. Approved Supplier List) Tj T*
+/F1 10 Tf
+(Production material may only be bought from suppliers on the Approved Supplier List \(ASL\).) Tj T*
+/F1 10 Tf
+(Suppliers struck from the Approved Supplier List must not be used for any reason, including) Tj T*
+/F1 10 Tf
+(urgent need.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(2.1 Certification) Tj T*
+/F1 10 Tf
+(Suppliers of electronic components, circuit boards and safety-related parts must hold a) Tj T*
+/F1 10 Tf
+(current ISO-9001 certificate. Suppliers of power conversion components \(DC link capacitor) Tj T*
+/F1 10 Tf
+(packs, choke cores\) must also hold IEC-62368 certification.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(3. Country of Origin) Tj T*
+/F1 10 Tf
+(Harbor Fabrication Co. buys from domestic \(United States and Mexico\) suppliers by) Tj T*
+/F1 10 Tf
+(preference. An international supplier may be chosen only if: \(a\) no domestic supplier can) Tj T*
+/F1 10 Tf
+(deliver by the date required, \(b\) the domestic price is more than 30% above the) Tj T*
+/F1 10 Tf
+(international price, or \(c\) no domestic source offers the part. For critical parts \(Section) Tj T*
+/F1 10 Tf
+(4\) the price test in \(b\) uses 45% instead of 30%.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(4. Critical Parts) Tj T*
+/F1 10 Tf
+(The following are critical parts: motor controller ICs, IGBT power modules, circuit boards,) Tj T*
+/F1 10 Tf
+(samarium-cobalt magnets, and all sensing ICs and transducers \(flow, level, salinity\). Each) Tj T*
+/F1 10 Tf
+(critical part should have at least two qualified suppliers.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(5. Supplier Diversification) Tj T*
+/F1 10 Tf
+(No single supplier may provide more than 65% of the units of any critical part bought in a) Tj T*
+/F1 10 Tf
+(rolling 12-month window, or more than 80% for any other part. A part available from only one) Tj T*
+/F1 10 Tf
+(supplier requires a Sole Source Justification on file.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(5.1 Order Quantities) Tj T*
+/F1 10 Tf
+(Every purchase order must be at or above the supplier's minimum order quantity \(MOQ\).) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(6. Hazardous Goods) Tj T*
+/F1 10 Tf
+(Purchases of hazardous goods must be flagged for review by purchasing before release;) Tj T*
+/F1 10 Tf
+(receiving them into the flammables store can add time to delivery.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(7. Approval Authority) Tj T*
+/F1 10 Tf
+(Any purchase order above $40,000 needs approval from the Sourcing Manager. Any purchase) Tj T*
+/F1 10 Tf
+(order above $120,000 needs approval from the VP of Supply Chain. Buyers should weigh total) Tj T*
+/F1 10 Tf
+(cost of ownership, not unit price alone.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(7.1 Line-Stop Orders) Tj T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 1302 >>
+stream
+BT
+/F1 10 Tf
+13 TL
+56 760 Td
+/F1 10 Tf
+(Where a purchase is needed to prevent a line stoppage, an order of up to $60,000 may be) Tj T*
+/F1 10 Tf
+(placed before approval, provided approval is obtained retroactively within 3 business days.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(8. Environmental Preference) Tj T*
+/F1 10 Tf
+(When two offers are comparable in price \(within 8%\) and delivery \(within 4 business days\),) Tj T*
+/F1 10 Tf
+(prefer the supplier with an environmental rating of A or better. Suppliers rated below B) Tj T*
+/F1 10 Tf
+(should be used only as a last resort. ISO-14001 certification counts in a supplier's favour.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(9. Strategic Partners) Tj T*
+/F1 10 Tf
+(Order volume with suppliers designated Strategic should be kept steady, even when another) Tj T*
+/F1 10 Tf
+(supplier offers somewhat lower prices \(savings of up to 12%\). Moving a significant share of) Tj T*
+/F1 10 Tf
+(volume away from a Strategic supplier requires approval from the VP of Supply Chain.) Tj T*
+/F1 10 Tf
+() Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 10 Tf
+(10. Delivery Dates) Tj T*
+/F1 10 Tf
+(Each purchase order's expected delivery date must equal the order date plus the supplier's) Tj T*
+/F1 10 Tf
+(quoted lead time.) Tj T*
+/F1 10 Tf
+() Tj T*
+ET
+endstream
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000320 00000 n 
+0000000456 00000 n 
+0000003892 00000 n 
+0000004028 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+5382
+%%EOF

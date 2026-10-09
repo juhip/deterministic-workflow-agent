@@ -1,0 +1,43 @@
+{
+  "_about": "Where the open model plugs in. Pick a profile with active_profile (or --llm-profile / LLM_PROFILE). 'none' runs the agent without any model; every decision is made by plain code either way. All profiles use the OpenAI-compatible chat API, an open wire format that open-source servers (vLLM, SGLang, TGI, Ollama, llama.cpp, LM Studio) implement. No vendor SDK or orchestration framework is involved.",
+  "active_profile": "none",
+  "profiles": {
+    "self-hosted": {
+      "base_url": "http://localhost:8000/v1",
+      "model": "local-open-model",
+      "api_key_env": "OPEN_MODEL_API_KEY",
+      "notes": "Placeholder for any self-hosted open model. Serve it with vLLM or SGLang (e.g. vllm serve <weights> --served-model-name local-open-model) and point base_url at the server."
+    },
+    "vllm": {
+      "base_url": "http://localhost:8000/v1",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "notes": "vllm serve Qwen/Qwen2.5-7B-Instruct"
+    },
+    "sglang": {
+      "base_url": "http://localhost:30000/v1",
+      "model": "Qwen/Qwen2.5-7B-Instruct"
+    },
+    "tgi": {
+      "base_url": "http://localhost:8080/v1",
+      "model": "tgi"
+    },
+    "ollama": {
+      "base_url": "http://localhost:11434/v1",
+      "model": "llama3.1:8b"
+    },
+    "llamacpp": {
+      "base_url": "http://localhost:8081/v1",
+      "model": "local"
+    },
+    "lmstudio": {
+      "base_url": "http://localhost:1234/v1",
+      "model": "lfm2.5-2.6b"
+    },
+    "hosted-open-model": {
+      "base_url": "https://api.together.xyz/v1",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "api_key_env": "TOGETHER_API_KEY",
+      "notes": "Any hosted provider that serves open weights over the same API."
+    }
+  }
+}

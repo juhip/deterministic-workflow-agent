@@ -1,0 +1,624 @@
+[
+  {
+    "id": "G01_inventory_netting",
+    "title": "Inventory reduces purchase shortfall",
+    "date": "2026-03-02",
+    "need_by": "2026-03-21",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 40,
+    "production_qty": 100,
+    "suppliers": [
+      {
+        "id": "S1",
+        "name": "Domestic Supply",
+        "country": "USA",
+        "price": 10,
+        "lead": 5
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "total_qty": 60,
+      "only_suppliers": [
+        "S1"
+      ]
+    },
+    "source": "Core requirement: net demand against inventory and existing purchase orders before buying."
+  },
+  {
+    "id": "G02_existing_po_netting",
+    "title": "Existing PO reduces shortfall",
+    "date": "2026-03-02",
+    "need_by": "2026-03-21",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 20,
+    "production_qty": 100,
+    "suppliers": [
+      {
+        "id": "S1",
+        "name": "Domestic Supply",
+        "country": "USA",
+        "price": 10,
+        "lead": 5
+      }
+    ],
+    "existing_pos": [
+      {
+        "po_number": "OPEN-1",
+        "supplier_id": "S1",
+        "quantity": 30,
+        "unit_price": 10,
+        "expected_delivery_date": "2026-03-11"
+      }
+    ],
+    "expect": {
+      "new_po_count": 1,
+      "new_total_qty": 50,
+      "only_new_suppliers": [
+        "S1"
+      ]
+    },
+    "source": "Core requirement: net demand against inventory and existing purchase orders before buying."
+  },
+  {
+    "id": "G03_asl_hard_filter",
+    "title": "Unapproved supplier is never used",
+    "date": "2026-03-02",
+    "need_by": "2026-03-21",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 0,
+    "production_qty": 20,
+    "suppliers": [
+      {
+        "id": "BAD",
+        "name": "Cheap Removed Supplier",
+        "country": "USA",
+        "price": 1,
+        "lead": 2,
+        "approved": false
+      },
+      {
+        "id": "GOOD",
+        "name": "Approved Supplier",
+        "country": "USA",
+        "price": 10,
+        "lead": 5
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "only_suppliers": [
+        "GOOD"
+      ],
+      "never_suppliers": [
+        "BAD"
+      ]
+    },
+    "source": "HF-PUR-100 §2: production material may only be bought from suppliers on the Approved Supplier List; suppliers struck from it must not be used for any reason."
+  },
+  {
+    "id": "G04_iso_for_electronics",
+    "title": "Electronic component requires ISO-9001",
+    "date": "2026-03-02",
+    "need_by": "2026-03-21",
+    "component": {
+      "id": "T-ELEC",
+      "name": "Motor Controller IC",
+      "description": "digital signal controller chip",
+      "category": "Electronic Component"
+    },
+    "inventory": 0,
+    "production_qty": 20,
+    "suppliers": [
+      {
+        "id": "NOISO",
+        "name": "No ISO Electronics",
+        "country": "USA",
+        "price": 1,
+        "lead": 3,
+        "certifications": ""
+      },
+      {
+        "id": "ISO",
+        "name": "ISO Electronics",
+        "country": "USA",
+        "price": 5,
+        "lead": 5,
+        "certifications": "ISO-9001"
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "only_suppliers": [
+        "ISO"
+      ],
+      "never_suppliers": [
+        "NOISO"
+      ]
+    },
+    "source": "HF-PUR-100 §2.1: suppliers of electronic components, circuit boards and safety-related parts need ISO-9001; DC link capacitor packs and choke cores also need IEC-62368."
+  },
+  {
+    "id": "G05_iec_for_capacitor_pack",
+    "title": "DC link capacitor pack requires ISO-9001 and IEC-62368",
+    "date": "2026-03-02",
+    "need_by": "2026-03-26",
+    "component": {
+      "id": "T-POWER",
+      "name": "DC Link Capacitor Pack",
+      "description": "drive bus capacitor pack",
+      "category": "Electronic Component"
+    },
+    "inventory": 0,
+    "production_qty": 10,
+    "suppliers": [
+      {
+        "id": "ISOONLY",
+        "name": "ISO Only",
+        "country": "USA",
+        "price": 1,
+        "lead": 3,
+        "certifications": "ISO-9001"
+      },
+      {
+        "id": "ISUL",
+        "name": "ISO and IEC",
+        "country": "USA",
+        "price": 5,
+        "lead": 5,
+        "certifications": "ISO-9001,IEC-62368"
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "only_suppliers": [
+        "ISUL"
+      ],
+      "never_suppliers": [
+        "ISOONLY"
+      ]
+    },
+    "source": "HF-PUR-100 §2.1: suppliers of electronic components, circuit boards and safety-related parts need ISO-9001; DC link capacitor packs and choke cores also need IEC-62368."
+  },
+  {
+    "id": "G06_mexico_is_domestic",
+    "title": "Mexico counts as domestic even if the DB flag says international",
+    "date": "2026-03-02",
+    "need_by": "2026-03-21",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 0,
+    "production_qty": 10,
+    "suppliers": [
+      {
+        "id": "MX",
+        "name": "Mexico Supplier",
+        "country": "Mexico",
+        "price": 9,
+        "lead": 5,
+        "is_domestic": false
+      },
+      {
+        "id": "INTL",
+        "name": "Vietnam Supplier",
+        "country": "Vietnam",
+        "price": 8,
+        "lead": 5,
+        "is_domestic": false
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "only_suppliers": [
+        "MX"
+      ]
+    },
+    "source": "HF-PUR-100 §3: domestic means United States and Mexico; international is allowed for timing, a domestic premium above 30%, or no domestic source; for critical parts the premium test is 45%."
+  },
+  {
+    "id": "G07_international_when_domestic_premium_gt30",
+    "title": "Non-critical international supplier allowed when the domestic premium exceeds 30%",
+    "date": "2026-03-02",
+    "need_by": "2026-03-21",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 0,
+    "production_qty": 10,
+    "suppliers": [
+      {
+        "id": "US",
+        "name": "US Supplier",
+        "country": "USA",
+        "price": 135,
+        "lead": 5
+      },
+      {
+        "id": "INTL",
+        "name": "International Supplier",
+        "country": "Vietnam",
+        "price": 100,
+        "lead": 5
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "only_suppliers": [
+        "INTL"
+      ]
+    },
+    "source": "HF-PUR-100 §3: domestic means United States and Mexico; international is allowed for timing, a domestic premium above 30%, or no domestic source; for critical parts the premium test is 45%."
+  },
+  {
+    "id": "G08_critical_uses_45pct_threshold",
+    "title": "Critical part keeps the domestic supplier below a 45% premium",
+    "date": "2026-03-02",
+    "need_by": "2026-03-26",
+    "component": {
+      "id": "T-SENSOR",
+      "name": "Level Sensor IC",
+      "description": "level sensing integrated circuit",
+      "category": "Electronic Component"
+    },
+    "inventory": 0,
+    "production_qty": 10,
+    "suppliers": [
+      {
+        "id": "US",
+        "name": "US ISO Sensor",
+        "country": "USA",
+        "price": 144,
+        "lead": 5,
+        "certifications": "ISO-9001"
+      },
+      {
+        "id": "INTL",
+        "name": "Vietnam ISO Sensor",
+        "country": "Vietnam",
+        "price": 100,
+        "lead": 5,
+        "certifications": "ISO-9001"
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "only_suppliers": [
+        "US"
+      ]
+    },
+    "source": "HF-PUR-100 §3: domestic means United States and Mexico; international is allowed for timing, a domestic premium above 30%, or no domestic source; for critical parts the premium test is 45%."
+  },
+  {
+    "id": "G09_moq_floor",
+    "title": "MOQ rounds purchase quantity up",
+    "date": "2026-03-02",
+    "need_by": "2026-03-21",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 0,
+    "production_qty": 12,
+    "suppliers": [
+      {
+        "id": "S1",
+        "name": "MOQ Supplier",
+        "country": "USA",
+        "price": 10,
+        "lead": 5,
+        "moq": 30
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "total_qty": 30,
+      "only_suppliers": [
+        "S1"
+      ]
+    },
+    "source": "HF-PUR-100 §5.1: every purchase order must be at or above the supplier's minimum order quantity."
+  },
+  {
+    "id": "G10_magnet_memo_split",
+    "title": "Magnet memo enforces the supplier split",
+    "date": "2026-06-01",
+    "need_by": "2026-07-01",
+    "component": {
+      "id": "ITM-4403",
+      "name": "Samarium-Cobalt Magnet Segments",
+      "description": "rare earth rotor magnet",
+      "category": "Raw Material"
+    },
+    "inventory": 0,
+    "production_qty": 100,
+    "suppliers": [
+      {
+        "id": "MAG1",
+        "name": "Magnet Primary",
+        "country": "USA",
+        "price": 5,
+        "lead": 10,
+        "certifications": "ISO-9001"
+      },
+      {
+        "id": "MAG2",
+        "name": "Magnet Secondary",
+        "country": "Mexico",
+        "price": 6,
+        "lead": 10,
+        "certifications": "ISO-9001"
+      }
+    ],
+    "expect": {
+      "po_count_min": 2,
+      "total_qty": 100,
+      "max_supplier_share": 0.6,
+      "min_secondary_share": 0.25
+    },
+    "source": "MEMO-2026-018: from May 18, 2026, samarium-cobalt magnets have a 60% single-supplier cap and at least 25% with a second supplier."
+  },
+  {
+    "id": "G11_air_freight_active",
+    "title": "Air freight memo can make international shipment on time",
+    "date": "2026-09-01",
+    "need_by": "2026-09-20",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 0,
+    "production_qty": 10,
+    "suppliers": [
+      {
+        "id": "INTL",
+        "name": "International Only",
+        "country": "Vietnam",
+        "price": 10,
+        "lead": 26
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "only_suppliers": [
+        "INTL"
+      ],
+      "delivery_date": "2026-09-17",
+      "rationale_contains": [
+        "air freight",
+        "Sourcing Manager"
+      ]
+    },
+    "source": "MEMO-2026-044: Aug 3 - Nov 2, 2026, international air freight cuts lead time by 10 days, never below 5 days; each request needs Sourcing Manager approval."
+  },
+  {
+    "id": "G12_air_freight_expired",
+    "title": "Expired air-freight memo no longer shortens lead time",
+    "date": "2026-11-09",
+    "need_by": "2026-11-29",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 0,
+    "production_qty": 10,
+    "suppliers": [
+      {
+        "id": "INTL",
+        "name": "International Only",
+        "country": "Vietnam",
+        "price": 10,
+        "lead": 26
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "only_suppliers": [
+        "INTL"
+      ],
+      "delivery_date": "2026-12-05",
+      "alert_contains": [
+        "late"
+      ]
+    },
+    "source": "MEMO-2026-044: Aug 3 - Nov 2, 2026, international air freight cuts lead time by 10 days, never below 5 days; each request needs Sourcing Manager approval. HF-PUR-100 §10: the expected delivery date is the order date plus the quoted lead time."
+  },
+  {
+    "id": "G13_sustainability_preference",
+    "title": "Comparable offers prefer environmental rating A",
+    "date": "2026-03-02",
+    "need_by": "2026-03-26",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 0,
+    "production_qty": 10,
+    "suppliers": [
+      {
+        "id": "B",
+        "name": "B Supplier",
+        "country": "USA",
+        "price": 100,
+        "lead": 5,
+        "sustainability": "B"
+      },
+      {
+        "id": "A",
+        "name": "A Supplier",
+        "country": "USA",
+        "price": 106,
+        "lead": 9,
+        "sustainability": "A"
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "only_suppliers": [
+        "A"
+      ]
+    },
+    "source": "HF-PUR-100 §8: when price is within 8% and delivery within 4 business days, prefer an environmental rating of A or better."
+  },
+  {
+    "id": "G14_strategic_preference",
+    "title": "Strategic supplier kept within the 12% savings band",
+    "date": "2026-03-02",
+    "need_by": "2026-03-26",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 0,
+    "production_qty": 10,
+    "suppliers": [
+      {
+        "id": "STD",
+        "name": "Standard Supplier",
+        "country": "USA",
+        "price": 100,
+        "lead": 5,
+        "tier": "Standard",
+        "sustainability": "B"
+      },
+      {
+        "id": "STRAT",
+        "name": "Strategic Supplier",
+        "country": "USA",
+        "price": 111,
+        "lead": 5,
+        "tier": "Strategic",
+        "sustainability": "B"
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "only_suppliers": [
+        "STRAT"
+      ]
+    },
+    "source": "HF-PUR-100 §9: keep Strategic supplier volume steady even when alternatives save up to 12%."
+  },
+  {
+    "id": "G15_hazmat_review",
+    "title": "Hazardous material is flagged for review",
+    "date": "2026-03-02",
+    "need_by": "2026-03-26",
+    "component": {
+      "id": "T-HAZ",
+      "name": "Flammable Process Solvent",
+      "description": "controlled shop chemical",
+      "category": "Raw Material",
+      "hazardous": true
+    },
+    "inventory": 0,
+    "production_qty": 10,
+    "suppliers": [
+      {
+        "id": "S1",
+        "name": "Chemical Supplier",
+        "country": "USA",
+        "price": 10,
+        "lead": 5
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "rationale_contains": [
+        "hazard"
+      ]
+    },
+    "source": "HF-PUR-100 §6: purchases of hazardous goods must be flagged for review by purchasing."
+  },
+  {
+    "id": "G16_manager_approval_over_40k",
+    "title": "Order over $40k requires Sourcing Manager approval",
+    "date": "2026-03-02",
+    "need_by": "2026-03-26",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 0,
+    "production_qty": 1000,
+    "suppliers": [
+      {
+        "id": "S1",
+        "name": "Large Supplier",
+        "country": "USA",
+        "price": 45,
+        "lead": 5
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "rationale_contains": [
+        "Sourcing Manager"
+      ]
+    },
+    "source": "HF-PUR-100 §7: above $40,000 needs the Sourcing Manager; above $120,000 needs the VP of Supply Chain."
+  },
+  {
+    "id": "G17_vp_approval_over_120k",
+    "title": "Order over $120k requires VP of Supply Chain approval",
+    "date": "2026-03-02",
+    "need_by": "2026-03-26",
+    "component": {
+      "id": "T-PART",
+      "name": "Mounting Bracket",
+      "description": "plain machined bracket",
+      "category": "Raw Material"
+    },
+    "inventory": 0,
+    "production_qty": 1000,
+    "suppliers": [
+      {
+        "id": "S1",
+        "name": "Very Large Supplier",
+        "country": "USA",
+        "price": 130,
+        "lead": 5
+      }
+    ],
+    "expect": {
+      "po_count": 1,
+      "rationale_contains": [
+        "VP of Supply Chain"
+      ]
+    },
+    "source": "HF-PUR-100 §7: above $40,000 needs the Sourcing Manager; above $120,000 needs the VP of Supply Chain."
+  }
+]
