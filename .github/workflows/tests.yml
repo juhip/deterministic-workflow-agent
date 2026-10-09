@@ -18,3 +18,15 @@ jobs:
       - run: pip install pytest
       - run: python -m pytest -q
       - run: python agent.py --scenario data/scenarios/scenario_05_competing_demand.sqlite
+
+  rl_env:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rl_env
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv run setup_data.py
+      - run: uv run --frozen --extra dev just lint
+      - run: uv run --frozen --extra test pytest -q

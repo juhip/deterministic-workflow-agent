@@ -1,0 +1,258 @@
+[
+    {
+        "task_id": "purchasing-sample-01-baseline",
+        "kind": "sample",
+        "source_file": "scenario_01_baseline.sqlite",
+        "current_date": "2026-10-05",
+        "tests": "one of the six provided sample scenarios",
+        "reference_orders": 17
+    },
+    {
+        "task_id": "purchasing-sample-02-partial-procurement",
+        "kind": "sample",
+        "source_file": "scenario_02_partial_procurement.sqlite",
+        "current_date": "2026-10-05",
+        "tests": "one of the six provided sample scenarios",
+        "reference_orders": 15
+    },
+    {
+        "task_id": "purchasing-sample-03-tight-timeline",
+        "kind": "sample",
+        "source_file": "scenario_03_tight_timeline.sqlite",
+        "current_date": "2026-10-05",
+        "tests": "one of the six provided sample scenarios",
+        "reference_orders": 21
+    },
+    {
+        "task_id": "purchasing-sample-04-low-inventory",
+        "kind": "sample",
+        "source_file": "scenario_04_low_inventory.sqlite",
+        "current_date": "2026-10-05",
+        "tests": "one of the six provided sample scenarios",
+        "reference_orders": 20
+    },
+    {
+        "task_id": "purchasing-sample-05-competing-demand",
+        "kind": "sample",
+        "source_file": "scenario_05_competing_demand.sqlite",
+        "current_date": "2026-11-09",
+        "tests": "one of the six provided sample scenarios",
+        "reference_orders": 19
+    },
+    {
+        "task_id": "purchasing-sample-06-simple",
+        "kind": "sample",
+        "source_file": "scenario_06_simple.sqlite",
+        "current_date": "2026-10-05",
+        "tests": "one of the six provided sample scenarios",
+        "reference_orders": 2
+    },
+    {
+        "task_id": "purchasing-golden-g01-inventory-netting",
+        "kind": "golden",
+        "source_file": "G01_inventory_netting.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Inventory reduces purchase shortfall",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g02-existing-po-netting",
+        "kind": "golden",
+        "source_file": "G02_existing_po_netting.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Existing PO reduces shortfall",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g03-asl-hard-filter",
+        "kind": "golden",
+        "source_file": "G03_asl_hard_filter.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Unapproved supplier is never used",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g04-iso-for-electronics",
+        "kind": "golden",
+        "source_file": "G04_iso_for_electronics.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Electronic component requires ISO-9001",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g05-iec-for-capacitor-pack",
+        "kind": "golden",
+        "source_file": "G05_iec_for_capacitor_pack.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "DC link capacitor pack requires ISO-9001 and IEC-62368",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g06-mexico-is-domestic",
+        "kind": "golden",
+        "source_file": "G06_mexico_is_domestic.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Mexico counts as domestic even if the DB flag says international",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g07-international-when-domestic-premium-gt30",
+        "kind": "golden",
+        "source_file": "G07_international_when_domestic_premium_gt30.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Non-critical international supplier allowed when the domestic premium exceeds 30%",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g08-critical-uses-45pct-threshold",
+        "kind": "golden",
+        "source_file": "G08_critical_uses_45pct_threshold.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Critical part keeps the domestic supplier below a 45% premium",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g09-moq-floor",
+        "kind": "golden",
+        "source_file": "G09_moq_floor.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "MOQ rounds purchase quantity up",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g10-magnet-memo-split",
+        "kind": "golden",
+        "source_file": "G10_magnet_memo_split.sqlite",
+        "current_date": "2026-06-01",
+        "tests": "Magnet memo enforces the supplier split",
+        "reference_orders": 2
+    },
+    {
+        "task_id": "purchasing-golden-g11-air-freight-active",
+        "kind": "golden",
+        "source_file": "G11_air_freight_active.sqlite",
+        "current_date": "2026-09-01",
+        "tests": "Air freight memo can make international shipment on time",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g12-air-freight-expired",
+        "kind": "golden",
+        "source_file": "G12_air_freight_expired.sqlite",
+        "current_date": "2026-11-09",
+        "tests": "Expired air-freight memo no longer shortens lead time",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g13-sustainability-preference",
+        "kind": "golden",
+        "source_file": "G13_sustainability_preference.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Comparable offers prefer environmental rating A",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g14-strategic-preference",
+        "kind": "golden",
+        "source_file": "G14_strategic_preference.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Strategic supplier kept within the 12% savings band",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g15-hazmat-review",
+        "kind": "golden",
+        "source_file": "G15_hazmat_review.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Hazardous material is flagged for review",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g16-manager-approval-over-40k",
+        "kind": "golden",
+        "source_file": "G16_manager_approval_over_40k.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Order over $40k requires Sourcing Manager approval",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-golden-g17-vp-approval-over-120k",
+        "kind": "golden",
+        "source_file": "G17_vp_approval_over_120k.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "Order over $120k requires VP of Supply Chain approval",
+        "reference_orders": 1
+    },
+    {
+        "task_id": "purchasing-variant-01-baseline-renamed",
+        "kind": "variant",
+        "source_file": "scenario_01_baseline_renamed.sqlite",
+        "current_date": "2026-10-05",
+        "tests": "new ID formats only",
+        "reference_orders": 17
+    },
+    {
+        "task_id": "purchasing-variant-05-competing-demand-renamed-2026-03-02",
+        "kind": "variant",
+        "source_file": "scenario_05_competing_demand_renamed_2026-03-02.sqlite",
+        "current_date": "2026-03-02",
+        "tests": "before the magnet memo and the air-freight window",
+        "reference_orders": 18
+    },
+    {
+        "task_id": "purchasing-variant-03-tight-timeline-renamed-2026-08-24",
+        "kind": "variant",
+        "source_file": "scenario_03_tight_timeline_renamed_2026-08-24.sqlite",
+        "current_date": "2026-08-24",
+        "tests": "air freight open, before the circuit-board freeze",
+        "reference_orders": 21
+    },
+    {
+        "task_id": "purchasing-variant-02-partial-procurement-renamed-2026-10-28",
+        "kind": "variant",
+        "source_file": "scenario_02_partial_procurement_renamed_2026-10-28.sqlite",
+        "current_date": "2026-10-28",
+        "tests": "air freight in its last days, freeze active, existing orders",
+        "reference_orders": 15
+    },
+    {
+        "task_id": "purchasing-variant-04-low-inventory-renamed-2025-12-14",
+        "kind": "variant",
+        "source_file": "scenario_04_low_inventory_renamed_2025-12-14.sqlite",
+        "current_date": "2025-12-14",
+        "tests": "before the procurement policy took effect",
+        "reference_orders": 19
+    },
+    {
+        "task_id": "purchasing-variant-06-simple-renamed-2027-03-08",
+        "kind": "variant",
+        "source_file": "scenario_06_simple_renamed_2027-03-08.sqlite",
+        "current_date": "2027-03-08",
+        "tests": "well after every memo window",
+        "reference_orders": 2
+    },
+    {
+        "task_id": "purchasing-variant-04-low-inventory-scale-demand",
+        "kind": "variant",
+        "source_file": "scenario_04_low_inventory_scale_demand.sqlite",
+        "current_date": "2026-10-05",
+        "tests": "demand x40: orders cross the $40,000 and $120,000 approval levels",
+        "reference_orders": 21
+    },
+    {
+        "task_id": "purchasing-variant-01-baseline-drop-widest-supplier",
+        "kind": "variant",
+        "source_file": "scenario_01_baseline_drop_widest_supplier.sqlite",
+        "current_date": "2026-10-05",
+        "tests": "the approved supplier with the widest catalog removed",
+        "reference_orders": 16
+    },
+    {
+        "task_id": "purchasing-variant-05-competing-demand-add-product",
+        "kind": "variant",
+        "source_file": "scenario_05_competing_demand_add_product.sqlite",
+        "current_date": "2026-11-09",
+        "tests": "a new product and customer order compete for the same parts",
+        "reference_orders": 19
+    }
+]

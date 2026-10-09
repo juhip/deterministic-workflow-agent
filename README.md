@@ -252,6 +252,15 @@ and late orders don't change (`evals/sensitivity.py`).
   and memos. A new kind of part, supplier or memo is untested.
 - **The model.** The model steps are tested with a stand-in model only.
 
+## As an RL environment
+
+[`rl_env/`](rl_env/README.md) turns this job into a task for a model: the model gets the scenario
+database and the policy PDFs and writes the purchase orders itself, and this agent's output is
+the reference answer. A model scores 0 if it releases an order the policy says a person must
+approve, or if it changes the scenario data. Otherwise its score is how closely its plan matches
+the reference. There are 32 tasks (samples, golden cases and created scenarios), built on
+[Karotte](https://github.com/preferencemodel/karotte). No model has been run on it yet.
+
 ## Changing the rules
 
 Business choices are settings in `rules/policy_rules.json`, not code. The main ones:
@@ -335,4 +344,5 @@ evals/                    scorecard, created scenarios, stress test, baseline, s
 tests/                    223 tests, including a stand-in model server
 data/                     synthetic sample scenarios, policy and memos (never modified)
 docs/                     the latest evaluation results
+rl_env/                   the job as an RL environment for models (Karotte)
 ```
