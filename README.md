@@ -13,6 +13,8 @@ it is written. Anything the rules cannot decide goes to a person, with the numbe
 
 Author: Juhi Parekh.
 
+**Scenario explorer:** https://juhip.github.io/deterministic-workflow-agent/ (scenarios, approver inbox, purchasing policy and autonomy settings, built from this repo's sample data).
+
 This agent is case study 3 of [Agent Reliability Lab](https://github.com/juhip/agent-reliability-lab), which wraps it in an independent safety layer without changing its code.
 
 > **All data in this repository is synthetic.** The company (Harbor Fabrication Co.), its
