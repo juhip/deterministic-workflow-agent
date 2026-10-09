@@ -1,6 +1,6 @@
-# Procurement Agent
+# Deterministic Workflow Agent
 
-A policy-bound purchase-order agent. It reads a planning database, works out what each production
+A policy-bound purchase-order agent, built as a deterministic workflow. It reads a planning database, works out what each production
 order is short of and by when, applies a written purchasing policy and the memos in force on that
 date, and writes purchase orders and alerts back into the same database. Routine orders are
 released; anything risky is held for a named approver with the reason.
@@ -12,6 +12,8 @@ notes, memos). Code makes every purchasing decision. A separate check verifies e
 it is written. Anything the rules cannot decide goes to a person, with the numbers.
 
 Author: Juhi Parekh.
+
+This agent is case study 3 of [Agent Reliability Lab](https://github.com/juhip/agent-reliability-lab), which wraps it in an independent safety layer without changing its code.
 
 > **All data in this repository is synthetic.** The company (Harbor Fabrication Co.), its
 > suppliers, parts, customers, prices, lead times, purchasing policy and memos are invented for
